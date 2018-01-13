@@ -32,6 +32,24 @@ public class CaseHandler {
             }
         }
 
+        for (int i = countries.size() - 1; i > 0; i--) {
+            for (int j = 0; j < i; j++) {
+                if (countries.get(j).daysTocked > countries.get(j + 1).daysTocked) {
+                    Country t = countries.get(j);
+                    countries.set(j, countries.get(j + 1));
+                    countries.set(j + 1, t);
+                }
+                else
+                    if(countries.get(j).daysTocked == countries.get(j + 1).daysTocked){
+                    if(countries.get(j).name.compareTo( countries.get(j + 1).name) > 0){
+                        Country t = countries.get(j);
+                        countries.set(j, countries.get(j + 1));
+                        countries.set(j + 1, t);
+                    }
+                    }
+            }
+        }
+
         for (Country country:countries) {
             result+= new String(country.name + " " + country.daysTocked);
             result+= System.lineSeparator();
